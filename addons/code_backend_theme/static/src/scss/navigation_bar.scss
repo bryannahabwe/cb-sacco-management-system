@@ -285,7 +285,7 @@ font-weight: bold;
     }
 }
 .o_data_row:has(.custom-control-input:checked){
-background: white !important;
+background: #E5E3F3 !important;
 }
 .o_field_one2many{
     .o_list_view{
@@ -334,18 +334,10 @@ z-index: 1;
 .o_optional_columns_dropdown_toggle{
 z-index: 999;
 }
-.o_home_menu_background:not(.o_home_menu_background_custom) .o_main_navbar{
-    max-height:100px;
-}
-
 
 .o_progressbar .o_progress .o_progressbar_complete {
 background-color: #3d9bbb;
 }
 .o_cp_left .btn {
     margin-right: 10px !important;
-}
-
-.o_main_navbar .o_menu_sections {
-    flex-wrap: wrap !important;
 }
