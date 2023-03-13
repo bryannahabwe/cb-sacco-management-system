@@ -15,8 +15,8 @@ margin-right: 30px !important;
 color: #ffffff !important;
 }
 .o_main_navbar, .btn-primary, .btn-primary:active, .o_searchview_facet_label {
-  background-color: $primary_accent !important;
-  color: $inverse_accent !important;
+  //background-color: $primary_accent !important;
+  //color: $inverse_accent !important;
 }
 .o_search_panel_section_icon {
   color: $primary_accent !important;
@@ -40,15 +40,15 @@ color: #ffffff !important;
 }
 
 .o_main_navbar > a:hover {
-  background-color: lighten($primary_accent, 10%) !important;
+  //background-color: lighten($primary_accent, 10%) !important;
 }
 
 .o_main_navbar > .o_menu_sections > li > a:hover, .o_main_navbar > .o_menu_systray > li > a:hover, .o_main_navbar > .o_menu_sections > li.show > a, .o_main_navbar > .o_menu_systray > li.show > a {
-  background-color: lighten($primary_accent, 10%) !important;
+  //background-color: lighten($primary_accent, 10%) !important;
 }
 
 .o_main_navbar > .o_menu_apps > li > a:hover, .o_main_navbar > .o_menu_apps > li > a:active {
-  background-color: lighten($primary_accent, 10%) !important;
+  //background-color: lighten($primary_accent, 10%) !important;
 }
 
 .o_main_navbar > .o_menu_apps > .dropdown.show > .dropdown-menu.show {
@@ -214,7 +214,7 @@ background-color: $primary_accent !important;
 color: $inverse_accent !important;
 }
 .o_menu_sections, .o_menu_systray, .o_web_client > header{
-background: $primary_accent !important;
+//background: $primary_accent !important;
 }
 .fa-building-o{
 color: white !important;

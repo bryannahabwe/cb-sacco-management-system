@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+{
+    'name': "cbs",
+    'summary': """Church Billionaire Sacco System""",
+    'description': """Church Billionaire Sacco System""",
+    'author': "CBS",
+    'sequence': 1,
+    'website': "",
+    'category': 'Other',
+    'version': '14.0.0.2',
+    'depends': ['base'],
+    'license': "LGPL-3",
+    # always loaded
+    'data': [
+        'security/cbs_security.xml',
+        'security/ir.model.access.csv',
+        # 'data/generating_ktg_member_number.xml',
+        'views/member_view.xml',
+        'views/beneficiary_view.xml',
+        'views/monthly_savings_view.xml',
+        # 'views/financial_year_view.xml',
+        # 'views/drive_setup_view.xml',
+        # 'views/drive_participation_view.xml',
+        # 'views/annual_subscription.xml',
+        # 'report/report_menu.xml',
+        # 'report/member_report.xml',
+        # 'wizard/ktg_member_report_wizard.xml',
+        'menu/cbs_menu.xml',
+    ],
+    'installable': True,
+    'application': True,
+}

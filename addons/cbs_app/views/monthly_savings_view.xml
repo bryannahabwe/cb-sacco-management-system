@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="monthly_saving_tree_view" model="ir.ui.view">
+            <field name="name">cbs.monthly.saving.tree</field>
+            <field name="model">cbs.monthly.saving</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Monthly Saving">
+                    <field name="member_id"/>
+                    <field name="paid_for"/>
+                    <field name="year"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="amount" sum="Total Amount Saved"/>
+                    <field name="amount_in_words"/>
+                    <field name="date_of_payment"/>
+                    <field name="state" widget="badge" decoration-success = "state=='paid'"
+                    decoration-info = "state in ('draft', 'submitted')"
+                    decoration-danger = "state=='cancelled'"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="monthly_saving_form_view" model="ir.ui.view">
+            <field name="name">cbs.monthly.saving.form</field>
+            <field name="model">cbs.monthly.saving</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Monthly Saving">
+                    <header groups="base.group_user">
+                        <button string="Submit" states="draft" class="oe_highlight"
+                                type="object" name="action_confirm"/>
+                        <button name="action_pay" states="submitted" string="Approve"
+                                type="object" class="oe_highlight"/>
+                        <button name="action_cancel" states="draft,submitted" string="Cancel"/>
+                        <button name="action_draft" states="cancelled" string="Set to Draft"
+                                type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,paid"/>
+                    </header>
+                    <sheet>
+                        <group colspan="4" col="4" name="main">
+                            <field name="member_id"/>
+                            <field name="date_of_payment"/>
+                            <field name="paid_for"/>
+                            <field name="year"/>
+                            <field name="amount" widget="monetary" force_save="1"/>
+                            <field name="amount_in_words"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="monthly_saving_search_view" model="ir.ui.view">
+            <field name="name">cbs.monthly.saving.search</field>
+            <field name="model">cbs.monthly.saving</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Monthly Saving">
+                    <field name="member_id"/>
+                    <newline/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="monthly_saving_act_window">
+            <field name="name">Monthly Savings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cbs.monthly.saving</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="monthly_saving_search_view"/>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new Monthly Saving</p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="monthly_saving_act_view_form">
+            <field name="act_window_id" ref="monthly_saving_act_window"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="monthly_saving_form_view"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="monthly_saving_act_view_tree">
+            <field name="act_window_id" ref="monthly_saving_act_window"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="monthly_saving_tree_view"/>
+        </record>
+    </data>
+</odoo>

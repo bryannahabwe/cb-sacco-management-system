@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- CBS Main Menu -->
+        <menuitem id="menu_cbs_root"
+                  name="CBS"
+                  sequence="1"
+                  web_icon="cbs_app,static/description/icon.png"/>
+
+        <!-- CBS Members Menu -->
+        <menuitem id="menu_cbs_member"
+                  name="Members"
+                  parent="menu_cbs_root"
+                  action="member_act_window"
+                  sequence="1"/>
+
+        <!-- CBS Beneficiary Menu -->
+        <menuitem id="menu_cbs_beneficiary"
+                  name="Beneficiaries"
+                  parent="menu_cbs_root"
+                  action="beneficiary_act_window"
+                  sequence="1"/>
+
+        <!-- CBS Monthly Saving Menu -->
+        <menuitem id="menu_cbs_monthly_saving"
+                  name="Monthly Savings"
+                  parent="menu_cbs_root"
+                  action="monthly_saving_act_window"
+                  sequence="1"/>
+    </data>
+</odoo>

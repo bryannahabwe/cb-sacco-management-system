@@ -14,18 +14,18 @@ a.btn {
 }
 
 .o_main_navbar, .o_searchview_facet_label {
-  background-color: transparent !important;
-  color: $f_color !important;
+  //background-color: transparent !important;
+  //color: $f_color !important;
   border:1px !important;
 }
 .o_menu_sections, .o_menu_systray, .o_web_client > header{
-background: $bg_white !important;
+//background: $bg_white !important;
 }
 .oe_topbar_name {
-    color: $f_color !important;
+    //color: $f_color !important;
 }
 .o_main_navbar > .o_menu_apps > li > a > i {
-    color: $f_color !important;
+    //color: $f_color !important;
     font-size: 16px !important;
 }
 .o_main_navbar {
@@ -36,7 +36,7 @@ background: $bg_white !important;
   border-bottom: 0px solid #5f5e97 !important;
   -webkit-box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03) !important;
   box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03) !important;
-  background-color: #fff !important;
+  //background-color: #fff !important;
 }
 
 .top_heading {
@@ -56,20 +56,20 @@ background: $bg_white !important;
 }
 
 .o-no-caret > i, button[aria-pressed="true"] {
-    color: $f_color !important;
+    //color: $f_color !important;
 }
 .o_main_navbar > ul > li > a, .o_main_navbar > ul > li > label {
     height: 46px;
     padding: 0 5px;
-    color: $f_color !important;
+    //color: $f_color !important;
     line-height: 46px;
 }
 .o_main_navbar > .o_menu_sections > li > a:hover, .o_main_navbar > .o_menu_systray > li > a:hover, .o_main_navbar > .o_menu_sections > li.show > a, .o_main_navbar > .o_menu_systray > li.show > a {
-    background-color: $bg_white !important;
+    //background-color: $bg_white !important;
 }
 
 .topbar_icon .fa {
-    color: #555b6d !important;
+    //color: #555b6d !important;
     font-size: 20px !important
 }
 
