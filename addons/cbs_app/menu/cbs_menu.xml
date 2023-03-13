@@ -19,13 +19,20 @@
                   name="Beneficiaries"
                   parent="menu_cbs_root"
                   action="beneficiary_act_window"
-                  sequence="1"/>
+                  sequence="2"/>
 
         <!-- CBS Monthly Saving Menu -->
         <menuitem id="menu_cbs_monthly_saving"
                   name="Monthly Savings"
                   parent="menu_cbs_root"
                   action="monthly_saving_act_window"
-                  sequence="1"/>
+                  sequence="3"/>
+
+         <!-- CBS Loan Application Menu -->
+        <menuitem id="menu_cbs_loan_application"
+                  name="Loan Applications"
+                  parent="menu_cbs_root"
+                  action="loan_application_act_window"
+                  sequence="4"/>
     </data>
 </odoo>

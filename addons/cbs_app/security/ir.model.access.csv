@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_cbs_app,cbs_app.cbs_member,model_cbs_member,base.group_user,1,1,1,1
 access_cbs_app_beneficiary,cbs_app.cbs_beneficiary,model_cbs_beneficiary,base.group_user,1,1,1,1
 access_cbs_app_monthly_saving,cbs_app.cbs_monthly_saving,model_cbs_monthly_saving,base.group_user,1,1,1,1
+access_cbs_app_loan_application,cbs_app.cbs_loan_application,model_cbs_loan_application,base.group_user,1,1,1,1
