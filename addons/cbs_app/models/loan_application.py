@@ -10,6 +10,11 @@ class CbsLoanApplication(models.Model):
     amount = fields.Monetary('Amount', required=True)
     amount_in_words = fields.Char('Amount In Words', compute='_amount_in_word', readonly=True, )
     payment_period = fields.Integer('Payment Period', required=True)
+    payment_length = fields.Selection(selection=[
+        ('month', 'Month'),
+        ('year', 'Year')],
+        string='Payment Length',
+        required=True)
     start_date_of_payment = fields.Date('Start Date of Payment', required=True, default=fields.Date.today())
     currency_id = fields.Many2one('res.currency', string='Currency',
                                   default=lambda self: self.env.user.company_id.currency_id)
@@ -17,7 +22,8 @@ class CbsLoanApplication(models.Model):
         ('draft', 'Draft'),
         ('submitted', 'Submitted'),
         ('approved', 'Approved'),
-        ('cancelled', 'Cancelled')
+        ('cancelled', 'Cancelled'),
+        ('cleared', 'Cleared')
     ], string='State', default='draft', required=True)
     referee_ids = fields.Many2many('cbs.member', string='Referees', required=True)
 
@@ -30,6 +36,9 @@ class CbsLoanApplication(models.Model):
 
     def action_approve(self):
         self.state = 'approved'
+
+    def action_cleared(self):
+        self.state = 'cleared'
 
     def action_cancel(self):
         self.state = 'cancelled'

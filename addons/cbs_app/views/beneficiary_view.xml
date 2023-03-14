@@ -47,7 +47,7 @@
         </record>
 
         <record id="beneficiary_act_window" model="ir.actions.act_window">
-            <field name="name">Beneficiary</field>
+            <field name="name">Beneficiaries</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">cbs.beneficiary</field>
             <field name="view_mode">tree,form</field>

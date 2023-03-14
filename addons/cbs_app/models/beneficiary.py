@@ -17,7 +17,6 @@ class CbsBeneficiary(models.Model):
         for record in self:
             if record.member_id:
                 total_percentage = sum(record.member_id.beneficiaries.mapped('percentage'))
-                print("Total Percentage:  ", total_percentage)
                 if total_percentage > 1:
                     raise ValidationError("Total percentage for all beneficiaries of this member cannot exceed 100%.")
 

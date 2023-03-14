@@ -25,6 +25,8 @@ class CbsMember(models.Model):
     referees = fields.Char('List of Referees')
     beneficiaries = fields.One2many('cbs.beneficiary', 'member_id', string='Beneficiaries')
     monthly_savings = fields.One2many('cbs.monthly.saving', 'member_id', string='Monthly Savings')
+    loan_applications = fields.One2many('cbs.loan.application', 'member_id', string='Loan Applications')
+    loan_payments = fields.One2many('cbs.loan.payment', 'member_id', string='Loan Payments')
 
     @api.depends('name', 'cbs_number')
     def _compute_display_name(self):

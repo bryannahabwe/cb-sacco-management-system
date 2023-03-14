@@ -57,6 +57,12 @@
                             <page name="monthly_savings_page" string="Monthly Savings">
                                 <field name="monthly_savings" nolabel="1" readonly="1"/>
                             </page>
+                            <page name="loan_applications_page" string="Loan Applications">
+                                <field name="loan_applications" nolabel="1" readonly="1"/>
+                            </page>
+                            <page name="loan_payments_page" string="Loan Payments">
+                                <field name="loan_payments" nolabel="1" readonly="1"/>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>
