@@ -9,12 +9,13 @@
                 <tree string="Loan Application">
                     <field name="member_id"/>
                     <field name="currency_id" invisible="1"/>
-                    <field name="amount" sum="Total Amount Saved"/>
-                    <field name="amount_in_words"/>
                     <field name="payment_period"/>
                     <field name="payment_length"/>
                     <field name="start_date_of_payment"/>
-                    <field name="referee_ids" widget="many2many_tags"/>
+                    <field name="amount" sum="Total Principal"/>
+                    <field name="total_interest" sum="Total Interest"/>
+                    <field name="total_amount" sum="Total Amount"/>
+<!--                    <field name="referee_ids" widget="many2many_tags"/>-->
                     <field name="state" widget="badge" decoration-success="state=='approved'"
                            decoration-info="state in ('draft', 'submitted')"
                            decoration-danger="state=='cancelled'"/>
@@ -31,30 +32,42 @@
                     <header groups="base.group_user">
                         <button string="Submit" states="draft" class="oe_highlight"
                                 type="object" name="action_confirm"/>
-                        <button name="action_approve" states="submitted" string="Approve"
-                                type="object" class="oe_highlight"/>
-                        <button name="action_cleared" states="approved" string="Cleared"
-                                type="object" class="oe_highlight"/>
-                        <button name="action_cancel" states="draft,submitted" string="Cancel"/>
-                        <button name="action_draft" states="cancelled" string="Set to Draft"
-                                type="object"/>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved"/>
+                        <button string="Approve" states="submitted" class="oe_highlight"
+                                type="object" name="action_approve"/>
+                        <button string="Cleared" states="approved" class="oe_highlight"
+                                type="object" name="action_cleared"/>
+                        <button string="Cancel" states="draft,submitted,approved,cleared" class="oe_highlight"
+                                type="object" name="action_cancel"/>
+                        <button string="Set to Draft" states="cancelled" class="oe_highlight"
+                                type="object" name="action_draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,cancelled"/>
                     </header>
                     <sheet>
                         <group colspan="4" col="4" name="main">
                             <field name="member_id"/>
                             <field name="amount" widget="monetary" force_save="1"/>
-                            <field name="amount_in_words"/>
                             <field name="start_date_of_payment"/>
+                            <field name="amount_in_words"/>
+                            <field name="interest_rate" widget="percentage" readonly="True"/>
+                            <field name="total_interest" widget="monetary" force_save="1" readonly="True"/>
+                            <field name="currency_id" invisible="1"/>
                             <field name="currency_id" invisible="1"/>
                         </group>
                         <group string="Payment Period" colspan="4" col="4" name="payments">
                             <field name="payment_period"/>
                             <field name="payment_length"/>
+                            <field name="terms_in_months_text" readonly="True"/>
+                            <field name="terms_in_months" invisible="True"/>
                         </group>
                         <group string="Referees" name="referees">
                             <field name="referee_ids" nolabel="1" widget="many2many_tags"/>
+                            <field name="total_referee_savings" readonly="True"/>
                         </group>
+                        <notebook colspan="4">
+                            <page name="loan_payments_page" string="Loan Payments">
+                                <field name="loan_payments" nolabel="1" readonly="1"/>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>

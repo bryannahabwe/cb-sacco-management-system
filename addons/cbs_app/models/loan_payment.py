@@ -1,3 +1,5 @@
+import json
+
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
@@ -21,20 +23,26 @@ class CbsLoanPayment(models.Model):
         ('paid', 'Paid'),
         ('cancelled', 'Cancelled'),
     ], string='State', default='draft', required=True)
-    referee_ids = fields.Many2many('cbs.member', string='Referees', required=True)
+    loan_id = fields.Many2one('cbs.loan.application', string='Loan')
+    loan_id_domain = fields.Char(compute="_compute_loan_id_domain", readonly=True, store=False)
 
     def _amount_in_word(self):
         for rec in self:
             rec.amount_in_words = str(rec.currency_id.amount_to_text(rec.amount_paid))
 
-    @api.onchange('member_id')
-    def onchange_classroom(self):
+    @api.depends('member_id')
+    def _compute_loan_id_domain(self):
+        for rec in self:
+            rec.loan_id_domain = json.dumps([('member_id', '=', rec.member_id.id), ('state', '!=', 'cleared')])
+
+    @api.onchange('loan_id')
+    def onchange_loan_id(self):
         total_loan_amount = 0
-        if self.member_id:
-            loan_application_records = self.env['cbs.loan.application'].search([('member_id', '=', self.member_id.id),
-                                                                                ('state', '!=', 'cleared')])
+        if self.loan_id:
+            loan_application_records = self.env['cbs.loan.application'].search([('id', '=', self.loan_id.id),
+                                                                                ('state', '=', 'approved')])
             for record in loan_application_records:
-                total_loan_amount += record.amount
+                total_loan_amount = record.amount
         self.loan_amount = total_loan_amount
 
     @api.depends('amount_paid', 'loan_amount')

@@ -51,11 +51,11 @@
                             <field name="date_created" invisible="1"/>
                         </group>
                         <notebook colspan="4">
+                              <page name="monthly_savings_page" string="Monthly Savings">
+                                <field name="monthly_savings" nolabel="1" readonly="1"/>
+                            </page>
                             <page name="member_beneficiaries" string="Beneficiaries">
                                 <field name="beneficiaries" nolabel="1" readonly="1"/>
-                            </page>
-                            <page name="monthly_savings_page" string="Monthly Savings">
-                                <field name="monthly_savings" nolabel="1" readonly="1"/>
                             </page>
                             <page name="loan_applications_page" string="Loan Applications">
                                 <field name="loan_applications" nolabel="1" readonly="1"/>

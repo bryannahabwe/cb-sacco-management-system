@@ -4,7 +4,7 @@ from odoo.exceptions import ValidationError
 
 class CbsMember(models.Model):
     _name = "cbs.member"
-    _description = "display_name"
+    _description = "Members"
 
     name = fields.Char('Member Name', required=True)
     display_name = fields.Char('Display Name', compute='_compute_display_name')
@@ -21,7 +21,7 @@ class CbsMember(models.Model):
     state = fields.Selection(
         [('draft', 'Draft'), ('submitted', 'Submitted'),
          ('cancelled', 'Cancelled'), ('approved', 'Active')],
-        'State', default='draft', track_visibility='onchange')
+        'State', default='draft')
     referees = fields.Char('List of Referees')
     beneficiaries = fields.One2many('cbs.beneficiary', 'member_id', string='Beneficiaries')
     monthly_savings = fields.One2many('cbs.monthly.saving', 'member_id', string='Monthly Savings')

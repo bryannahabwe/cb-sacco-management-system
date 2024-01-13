@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <tree string="Loan Payment">
                     <field name="member_id"/>
+                    <field name="loan_id"/>
                     <field name="loan_amount"/>
                     <field name="amount_paid" sum="Total Amount Paid"/>
                     <field name="loan_balance" sum="Total Loan Balance"/>
@@ -40,6 +41,8 @@
                     <sheet>
                         <group colspan="4" col="4" name="main">
                             <field name="member_id"/>
+                            <field name="loan_id" domain="loan_id_domain"/>
+                            <field name="loan_id_domain" invisible="1"/>
                             <field name="loan_amount" widget="monetary" force_save="1"/>
                             <field name="amount_paid" widget="monetary" force_save="1"/>
                             <field name="loan_balance" widget="monetary" force_save="1"/>
