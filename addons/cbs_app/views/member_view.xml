@@ -39,19 +39,23 @@
                         <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved"/>
                     </header>
                     <sheet>
-                        <group colspan="4" col="4" name="main">
-                            <field name="name"/>
-                            <field name="cbs_number"/>
-                            <field name="phone_number"/>
-                            <field name="email"/>
-                            <field name="address"/>
-                            <field name="dob"/>
-                            <field name="gender"/>
-                            <field name="nin"/>
-                            <field name="date_created" invisible="1"/>
+                        <group name="main">
+                            <group>
+                                <field name="name"/>
+                                <field name="phone_number"/>
+                                <field name="address"/>
+                                <field name="gender"/>
+                                <field name="date_created" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="cbs_number"/>
+                                <field name="email"/>
+                                <field name="dob"/>
+                                <field name="nin"/>
+                            </group>
                         </group>
                         <notebook colspan="4">
-                              <page name="monthly_savings_page" string="Monthly Savings">
+                            <page name="monthly_savings_page" string="Monthly Savings">
                                 <field name="monthly_savings" nolabel="1" readonly="1"/>
                             </page>
                             <page name="member_beneficiaries" string="Beneficiaries">

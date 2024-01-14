@@ -10,7 +10,7 @@ class CbsLoanApplication(models.Model):
     display_name = fields.Char('Display Name', compute='_compute_display_name')
     member_id = fields.Many2one('cbs.member', 'Member', required=True,
                                 domain=lambda self: self._get_default_members())
-    amount = fields.Monetary('Principal', required=True)
+    amount = fields.Monetary('Amount', required=True)
     total_interest = fields.Monetary('Total Interest', required=True, default=0)
     total_amount = fields.Monetary('Total Amount', required=True, default=0,
                                    compute='_compute_total_amount', store=True)

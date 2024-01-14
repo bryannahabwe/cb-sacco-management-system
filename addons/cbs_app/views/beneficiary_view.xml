@@ -8,12 +8,16 @@
             <field name="arch" type="xml">
                 <form string="Beneficiary">
                     <sheet>
-                        <group colspan="4" col="4" name="main">
-                            <field name="member_id"/>
-                            <field name="name"/>
-                            <field name="phone_number"/>
-                            <field name="relationship"/>
-                            <field name="percentage" widget="percentage"/>
+                        <group>
+                            <group>
+                                <field name="member_id"/>
+                                <field name="phone_number"/>
+                                <field name="percentage" widget="percentage"/>
+                            </group>
+                            <group>
+                                <field name="name"/>
+                                <field name="relationship"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>

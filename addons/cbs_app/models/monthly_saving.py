@@ -22,7 +22,7 @@ class CbsMonthlySaving(models.Model):
         ('11', 'November'),
         ('12', 'December'),
     ], string='Paid for', required=True)
-    year = fields.Selection(selection='years_selection', string='Year', required=True, default='2022')
+    year = fields.Selection(selection='years_selection', string='Year', required=True, default='2024')
     amount = fields.Monetary('Amount', required=True)
     amount_in_words = fields.Char('Amount In Words', compute='_amount_in_word', readonly=True, )
     date_of_payment = fields.Date('Date of Payment', required=True, default=fields.Date.today())

@@ -14,9 +14,9 @@
                     <field name="amount" sum="Total Amount Saved"/>
                     <field name="amount_in_words"/>
                     <field name="date_of_payment"/>
-                    <field name="state" widget="badge" decoration-success = "state=='paid'"
-                    decoration-info = "state in ('draft', 'submitted')"
-                    decoration-danger = "state=='cancelled'"/>
+                    <field name="state" widget="badge" decoration-success="state=='paid'"
+                           decoration-info="state in ('draft', 'submitted')"
+                           decoration-danger="state=='cancelled'"/>
                 </tree>
             </field>
         </record>
@@ -38,14 +38,18 @@
                         <field name="state" widget="statusbar" statusbar_visible="draft,submitted,paid"/>
                     </header>
                     <sheet>
-                        <group colspan="4" col="4" name="main">
-                            <field name="member_id"/>
-                            <field name="date_of_payment"/>
-                            <field name="paid_for"/>
-                            <field name="year"/>
-                            <field name="amount" widget="monetary" force_save="1"/>
-                            <field name="amount_in_words"/>
-                            <field name="currency_id" invisible="1"/>
+                        <group name="main">
+                            <group>
+                                <field name="member_id"/>
+                                <field name="amount" widget="monetary" force_save="1"/>
+                                <field name="amount_in_words"/>
+                                <field name="currency_id" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="date_of_payment"/>
+                                <field name="paid_for"/>
+                                <field name="year"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>

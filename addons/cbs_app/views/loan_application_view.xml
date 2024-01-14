@@ -16,7 +16,7 @@
                     <field name="total_interest" sum="Total Interest"/>
                     <field name="total_amount" sum="Total Amount"/>
                     <field name="remaining_balance"/>
-<!--                    <field name="referee_ids" widget="many2many_tags"/>-->
+                    <!--                    <field name="referee_ids" widget="many2many_tags"/>-->
                     <field name="state" widget="badge" decoration-success="state=='approved'"
                            decoration-info="state in ('draft', 'submitted')"
                            decoration-danger="state=='cancelled'"/>
@@ -44,21 +44,29 @@
                         <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,cancelled"/>
                     </header>
                     <sheet>
-                        <group colspan="4" col="4" name="main">
-                            <field name="member_id"/>
-                            <field name="amount" widget="monetary" force_save="1"/>
-                            <field name="start_date_of_payment"/>
-                            <field name="amount_in_words"/>
-                            <field name="interest_rate" widget="percentage" readonly="True"/>
-                            <field name="total_interest" widget="monetary" force_save="1" readonly="True"/>
-                            <field name="currency_id" invisible="1"/>
-                            <field name="currency_id" invisible="1"/>
+                        <group string="Loan Payment">
+                            <group>
+                                <field name="member_id"/>
+                                <field name="start_date_of_payment"/>
+                                <field name="interest_rate" widget="percentage" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="amount" widget="monetary" force_save="1"/>
+                                <field name="amount_in_words"/>
+                                <field name="total_interest" widget="monetary" force_save="1" readonly="True"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="currency_id" invisible="1"/>
+                            </group>
                         </group>
-                        <group string="Payment Period" colspan="4" col="4" name="payments">
-                            <field name="payment_period"/>
-                            <field name="payment_length"/>
-                            <field name="terms_in_months_text" readonly="True"/>
-                            <field name="terms_in_months" invisible="True"/>
+                        <group string="Payment Period" name="payments">
+                            <group>
+                                <field name="payment_period"/>
+                                <field name="terms_in_months_text" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="payment_length"/>
+                                <field name="terms_in_months" invisible="True"/>
+                            </group>
                         </group>
                         <group string="Referees" name="referees">
                             <field name="referee_ids" nolabel="1" widget="many2many_tags"/>

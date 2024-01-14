@@ -12,7 +12,7 @@ class CbsMember(models.Model):
     email = fields.Char('Email')
     address = fields.Char('Address')
     dob = fields.Date('Date of Birth', date_format='%d/%m/%Y')
-    cbs_number = fields.Char('CBS Number', help="CBS Member Number")
+    cbs_number = fields.Char('CBS Number', help="CBS Member Number", required=True)
     date_created = fields.Datetime('Date Created', readonly=True, default=fields.Datetime.now)
     gender = fields.Selection(selection=[
         ('male', 'Male'),
