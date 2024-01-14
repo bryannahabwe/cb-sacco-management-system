@@ -40,6 +40,8 @@ class CbsLoanApplication(models.Model):
     terms_in_months = fields.Integer(string='Payment Period in Months', default=0)
     terms_in_months_text = fields.Char(string='Payment Period in Months', compute='_compute_terms_in_months_text',
                                        store=True)
+    remaining_balance = fields.Monetary('Remaining Balance', default=0, compute='_compute_remaining_balance',
+                                        store=True)
 
     @api.depends('member_id', 'amount')
     def _compute_display_name(self):
@@ -98,6 +100,13 @@ class CbsLoanApplication(models.Model):
                 total_savings += 0
         self.total_referee_savings = total_savings
 
+    @api.depends('amount')
+    def _compute_remaining_balance(self):
+        total = 0
+        if self.amount:
+            total = self.amount
+        self.remaining_balance = total
+
     @api.depends('amount', 'total_interest')
     def _compute_total_amount(self):
         total = 0
@@ -106,11 +115,14 @@ class CbsLoanApplication(models.Model):
         self.total_amount = total
 
     @api.constrains('amount', 'total_referee_savings')
-    def _check_admission_register(self):
+    def _check_amount(self):
         for rec in self:
+            print(rec.state)
             if rec.state == 'draft':
                 amount = rec.amount
                 total_referee_savings = rec.total_referee_savings
+                print(amount)
+                print(total_referee_savings)
                 if total_referee_savings < amount:
                     raise ValidationError(_(
                         "Total Referee Savings should greater than the loan amount requested"))

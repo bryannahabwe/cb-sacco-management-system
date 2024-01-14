@@ -11,7 +11,7 @@
                     <field name="loan_id"/>
                     <field name="loan_amount"/>
                     <field name="amount_paid" sum="Total Amount Paid"/>
-                    <field name="loan_balance" sum="Total Loan Balance"/>
+                    <field name="loan_balance"/>
                     <field name="currency_id" invisible="1"/>
                     <field name="amount_in_words"/>
                     <field name="date_of_payment"/>
@@ -45,10 +45,11 @@
                             <field name="loan_id_domain" invisible="1"/>
                             <field name="loan_amount" widget="monetary" force_save="1"/>
                             <field name="amount_paid" widget="monetary" force_save="1"/>
-                            <field name="loan_balance" widget="monetary" force_save="1"/>
-                            <field name="amount_in_words"/>
+                            <field name="loan_balance" force_save="1"/>
+                            <field name="amount_in_words" force_save="1"/>
                             <field name="date_of_payment"/>
                             <field name="currency_id" invisible="1"/>
+                            <field name="interest_amount" invisible="1" widget="monetary" force_save="1"/>
                         </group>
                     </sheet>
                 </form>

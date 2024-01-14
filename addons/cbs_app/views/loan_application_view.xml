@@ -15,6 +15,7 @@
                     <field name="amount" sum="Total Principal"/>
                     <field name="total_interest" sum="Total Interest"/>
                     <field name="total_amount" sum="Total Amount"/>
+                    <field name="remaining_balance"/>
 <!--                    <field name="referee_ids" widget="many2many_tags"/>-->
                     <field name="state" widget="badge" decoration-success="state=='approved'"
                            decoration-info="state in ('draft', 'submitted')"
