@@ -8,7 +8,7 @@
     'website': "",
     'category': 'Other',
     'version': '14.0.0.2',
-    'depends': ['base', 'web_domain_field'],
+    'depends': ['base'],
     'license': "LGPL-3",
     # always loaded
     'data': [
