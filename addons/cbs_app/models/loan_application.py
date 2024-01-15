@@ -55,7 +55,6 @@ class CbsLoanApplication(models.Model):
             rec.amount_in_words = str(rec.currency_id.amount_to_text(rec.amount))
 
     def _get_default_members(self):
-        self.env.cache.invalidate()
         members_with_loans = self.env['cbs.loan.application'].search([('state', '=', 'approved')]).mapped(
             'member_id.id')
         registered_members = self.env['cbs.member'].search([('state', '=', 'approved')])
