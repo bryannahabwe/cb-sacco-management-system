@@ -44,7 +44,7 @@
                         <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,cancelled"/>
                     </header>
                     <sheet>
-                        <group string="Loan Payment">
+                        <group>
                             <group>
                                 <field name="member_id"/>
                                 <field name="start_date_of_payment"/>
@@ -69,7 +69,7 @@
                             </group>
                         </group>
                         <group string="Referees" name="referees">
-                            <field name="referee_ids" nolabel="1" widget="many2many_tags"/>
+                            <field name="referee_ids" widget="many2many_tags"/>
                             <field name="total_referee_savings" readonly="True"/>
                         </group>
                         <notebook colspan="4">
