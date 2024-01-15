@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- CBS Main Menu -->
+        <menuitem id="menu_cbs_root"
+                  name="CBS"
+                  sequence="1"
+                  web_icon="cbs,static/description/icon.png"/>
+
+        <!-- CBS Members Menu -->
+        <menuitem id="menu_cbs_member"
+                  name="Members"
+                  parent="menu_cbs_root"
+                  action="member_act_window"
+                  sequence="1"/>
+
+        <!-- CBS Beneficiary Menu -->
+        <menuitem id="menu_cbs_beneficiary"
+                  name="Beneficiaries"
+                  parent="menu_cbs_root"
+                  action="beneficiary_act_window"
+                  sequence="2"/>
+
+        <!-- CBS Monthly Saving Menu -->
+        <menuitem id="menu_cbs_monthly_saving"
+                  name="Monthly Savings"
+                  parent="menu_cbs_root"
+                  action="monthly_saving_act_window"
+                  sequence="3"/>
+
+        <!-- CBS Loan Application Menu -->
+        <menuitem id="menu_cbs_loan_application"
+                  name="Loan Applications"
+                  parent="menu_cbs_root"
+                  action="loan_application_act_window"
+                  sequence="4"/>
+
+        <!-- CBS Loan Payment Menu -->
+        <menuitem id="menu_cbs_loan_payment"
+                  name="Loan Payments"
+                  parent="menu_cbs_root"
+                  action="loan_payment_act_window"
+                  sequence="5"/>
+    </data>
+</odoo>

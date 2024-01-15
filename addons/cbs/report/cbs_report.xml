@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="monthly_savings_report" model="ir.actions.report">
+            <field name="name">Receipt</field>
+            <field name="model">cbs.monthly.saving</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">cbs.report_monthly_savings</field>
+            <field name="report_file">cbs.report_monthly_savings</field>
+            <field name="print_report_name">'Receipt - %s' % (object.member_id.name)</field>
+            <field name="attachment"/>
+            <field name="binding_model_id" ref="model_cbs_monthly_saving"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

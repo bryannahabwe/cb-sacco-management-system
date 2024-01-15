@@ -1,0 +1,118 @@
+<odoo>
+    <data>
+        <record id="member_tree_view" model="ir.ui.view">
+            <field name="name">cbs.member.tree</field>
+            <field name="model">cbs.member</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Members">
+                    <field name="name"/>
+                    <field name="cbs_number"/>
+                    <field name="phone_number"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                    <field name="dob"/>
+                    <field name="gender"/>
+                    <field name="nin"/>
+                    <field name="state" widget="badge" decoration-success="state =='approved'"
+                           decoration-info="state in ('draft', 'submitted')"
+                           decoration-danger="state =='cancelled'"/>
+                    <field name="date_created" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="member_form_view" model="ir.ui.view">
+            <field name="name">cbs.member.form</field>
+            <field name="model">cbs.member</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Member">
+                    <header>
+                        <button string="Submit" class="oe_highlight"
+                                type="object" name="submit_form"
+                                invisible="state != 'draft'"/>
+                        <button name="confirm_cancel" string="Cancel"
+                                invisible="state not in ('draft', 'submitted')"/>
+                        <button name="approve_member" string="Approve"
+                                type="object" class="oe_highlight"
+                                invisible="state != 'submitted'"/>
+                        <button name="confirm_to_draft" string="Set to Draft"
+                                type="object" invisible="state != 'cancelled'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved"/>
+                    </header>
+                    <sheet>
+                        <group name="main">
+                            <group>
+                                <field name="name"/>
+                                <field name="phone_number"/>
+                                <field name="address"/>
+                                <field name="gender"/>
+                                <field name="date_created" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="cbs_number"/>
+                                <field name="email"/>
+                                <field name="dob"/>
+                                <field name="nin"/>
+                            </group>
+                        </group>
+                        <notebook colspan="4">
+                            <page name="monthly_savings_page" string="Monthly Savings">
+                                <field name="monthly_savings" nolabel="1" readonly="1"/>
+                            </page>
+                            <page name="member_beneficiaries" string="Beneficiaries">
+                                <field name="beneficiaries" nolabel="1" readonly="1"/>
+                            </page>
+                            <page name="loan_applications_page" string="Loan Applications">
+                                <field name="loan_applications" nolabel="1" readonly="1"/>
+                            </page>
+                            <page name="loan_payments_page" string="Loan Payments">
+                                <field name="loan_payments" nolabel="1" readonly="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="member_search_view" model="ir.ui.view">
+            <field name="name">cbs.member.search</field>
+            <field name="model">cbs.member</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Member">
+                    <field name="name"/>
+                    <field name="cbs_number"/>
+                    <newline/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="member_act_window">
+            <field name="name">Members</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cbs.member</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="member_search_view"/>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new Member</p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="member_act_view_form">
+            <field name="act_window_id" ref="member_act_window"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="member_form_view"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="member_act_view_tree">
+            <field name="act_window_id" ref="member_act_window"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="member_tree_view"/>
+        </record>
+    </data>
+</odoo>

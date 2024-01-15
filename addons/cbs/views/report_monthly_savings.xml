@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_monthly_savings">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="cbs.report_monthly_savings_receipt"
+                       t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_monthly_savings_receipt">
+            <t t-call="web.external_layout">
+                <t t-set="o" t-value="o.with_context(lang=lang)"/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="text-center">
+                            <span class="border border-secondary rounded p-4">RECEIPT</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12">
+                        <div class="col-3 col-sm-3 col-md-3">
+                            <span>Received with thanks from:</span>
+                        </div>
+                        <div class="col-9 col-sm-9 col-md-9">
+                            <span t-if="o.member_id.cbs_number != '/' and o.state == 'paid'"
+                                  t-field="o.member_id.name" class="text-center"
+                                  style="text-decoration: none; border-bottom: 1px dotted #000;
+                                   text-transform: uppercase;">Test
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

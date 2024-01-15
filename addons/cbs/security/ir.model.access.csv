@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cbs,cbs.cbs_member,model_cbs_member,base.group_user,1,1,1,1
+access_cbs_beneficiary,cbs.cbs_beneficiary,model_cbs_beneficiary,base.group_user,1,1,1,1
+access_cbs_monthly_saving,cbs.cbs_monthly_saving,model_cbs_monthly_saving,base.group_user,1,1,1,1
+access_cbs_loan_application,cbs.cbs_loan_application,model_cbs_loan_application,base.group_user,1,1,1,1
+access_cbs_loan_payment,cbs.cbs_loan_payment,model_cbs_loan_payment,base.group_user,1,1,1,1

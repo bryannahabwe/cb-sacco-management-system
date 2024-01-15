@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="beneficiary_form_view" model="ir.ui.view">
+            <field name="name">cbs.beneficiary.form</field>
+            <field name="model">cbs.beneficiary</field>
+            <field name="arch" type="xml">
+                <form string="Beneficiary">
+                    <sheet>
+                        <header>
+                        <button string="Submit" class="oe_highlight"
+                                type="object" name="action_confirm"
+                                invisible="state != 'draft'"/>
+                        <button name="action_cancel" string="Cancel"
+                                invisible="state not in ('draft')"/>
+                        <button name="action_draft" string="Set to Draft"
+                                type="object" invisible="state != 'cancelled'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted"/>
+                    </header>
+                        <group>
+                            <group>
+                                <field name="member_id"/>
+                                <field name="phone_number"/>
+                                <field name="percentage" widget="percentage"/>
+                            </group>
+                            <group>
+                                <field name="name"/>
+                                <field name="relationship"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="beneficiary_tree_view" model="ir.ui.view">
+            <field name="name">cbs.beneficiary.tree</field>
+            <field name="model">cbs.beneficiary</field>
+            <field name="arch" type="xml">
+                <tree string="Beneficiary">
+                    <field name="member_id"/>
+                    <field name="name"/>
+                    <field name="phone_number"/>
+                    <field name="relationship"/>
+                    <field name="percentage" widget="percentage"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="beneficiary_search_view" model="ir.ui.view">
+            <field name="name">cbs.beneficiary.search</field>
+            <field name="model">cbs.beneficiary</field>
+            <field name="arch" type="xml">
+                <search string="Beneficiary">
+                    <field name="name"/>
+                    <field name="member_id"/>
+                    <newline/>
+                </search>
+            </field>
+        </record>
+
+        <record id="beneficiary_act_window" model="ir.actions.act_window">
+            <field name="name">Beneficiaries</field>
+            <field name="res_model">cbs.beneficiary</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="beneficiary_search_view"/>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add new Beneficiary.
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="beneficiary_act_view_form">
+            <field name="act_window_id" ref="beneficiary_act_window"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="beneficiary_form_view"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="beneficiary_act_view_tree">
+            <field name="act_window_id" ref="beneficiary_act_window"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="beneficiary_tree_view"/>
+        </record>
+    </data>
+</odoo>

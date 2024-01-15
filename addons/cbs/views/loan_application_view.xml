@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="loan_application_tree_view" model="ir.ui.view">
+            <field name="name">cbs.loan.application.tree</field>
+            <field name="model">cbs.loan.application</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Loan Application">
+                    <field name="member_id"/>
+                    <field name="currency_id" column_invisible="True"/>
+                    <field name="payment_period"/>
+                    <field name="payment_length"/>
+                    <field name="start_date_of_payment"/>
+                    <field name="amount" sum="Total Principal"/>
+                    <field name="total_interest" sum="Total Interest"/>
+                    <field name="total_amount" sum="Total Amount"/>
+                    <field name="remaining_balance"/>
+                    <!--                    <field name="referee_ids" widget="many2many_tags"/>-->
+                    <field name="state" widget="badge" decoration-success="state=='approved'"
+                           decoration-info="state in ('draft', 'submitted')"
+                           decoration-danger="state=='cancelled'"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="loan_application_form_view" model="ir.ui.view">
+            <field name="name">cbs.loan.application.form</field>
+            <field name="model">cbs.loan.application</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Loan Application">
+                    <header>
+                        <button string="Submit" class="oe_highlight"
+                                type="object" name="action_confirm"
+                                invisible="state != 'draft'"/>
+                        <button string="Approve" class="oe_highlight"
+                                type="object" name="action_approve"
+                                invisible="state != 'submitted'"/>
+                        <button string="Cleared" class="oe_highlight"
+                                type="object" name="action_cleared"
+                                invisible="state != 'approved'"/>
+                        <button string="Cancel" class="oe_highlight"
+                                type="object" name="action_cancel"
+                                invisible="state not in ('draft', 'submitted', 'approved', 'cleared')"/>
+                        <button string="Set to Draft" class="oe_highlight"
+                                type="object" name="action_draft"
+                                invisible="state != 'cancelled'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,cancelled"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="member_id"/>
+                                <field name="start_date_of_payment"/>
+                                <field name="interest_rate" widget="percentage" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="amount" widget="monetary" force_save="1"/>
+                                <field name="amount_in_words"/>
+                                <field name="total_interest" widget="monetary" force_save="1" readonly="True"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="currency_id" invisible="1"/>
+                            </group>
+                        </group>
+                        <group string="Payment Period" name="payments">
+                            <group>
+                                <field name="payment_period"/>
+                                <field name="terms_in_months_text" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="payment_length"/>
+                                <field name="terms_in_months" invisible="True"/>
+                            </group>
+                        </group>
+                        <group string="Referees" name="referees">
+                            <field name="referee_ids" widget="many2many_tags"/>
+                            <field name="total_referee_savings" readonly="True"/>
+                        </group>
+                        <notebook colspan="4">
+                            <page name="loan_payments_page" string="Loan Payments">
+                                <field name="loan_payments" nolabel="1" readonly="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="loan_application_search_view" model="ir.ui.view">
+            <field name="name">cbs.loan.application.search</field>
+            <field name="model">cbs.loan.application</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Loan Application">
+                    <field name="member_id"/>
+                    <newline/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="loan_application_act_window">
+            <field name="name">Loan Applications</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cbs.loan.application</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="loan_application_search_view"/>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create a new Loan Application</p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="loan_application_act_view_form">
+            <field name="act_window_id" ref="loan_application_act_window"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="loan_application_form_view"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="loan_application_act_view_tree">
+            <field name="act_window_id" ref="loan_application_act_window"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="loan_application_tree_view"/>
+        </record>
+    </data>
+</odoo>
