@@ -53,8 +53,26 @@ class CbsMonthlySaving(models.Model):
     def action_pay(self):
         self.state = 'paid'
 
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Monthly Saving',
+            'res_model': 'cbs.monthly.saving',
+            'view_mode': 'tree,form',
+            'target': 'current',
+            'domain': [],
+        }
+
     def action_cancel(self):
         self.state = 'cancelled'
+
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Monthly Saving',
+            'res_model': 'cbs.monthly.saving',
+            'view_mode': 'tree,form',
+            'target': 'current',
+            'domain': [],
+        }
 
     def action_draft(self):
         self.state = 'draft'

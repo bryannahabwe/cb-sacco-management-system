@@ -27,9 +27,26 @@ class CbsBeneficiary(models.Model):
 
     def action_confirm(self):
         self.state = 'submitted'
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Beneficiary',
+            'res_model': 'cbs.beneficiary',
+            'view_mode': 'tree,form',
+            'target': 'current',
+            'domain': [],
+        }
 
     def action_cancel(self):
         self.state = 'cancelled'
+
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Beneficiary',
+            'res_model': 'cbs.beneficiary',
+            'view_mode': 'tree,form',
+            'target': 'current',
+            'domain': [],
+        }
 
     def action_draft(self):
         self.state = 'draft'

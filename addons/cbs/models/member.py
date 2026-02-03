@@ -11,8 +11,8 @@ class CbsMember(models.Model):
     phone_number = fields.Char('Telephone Number', required=True)
     email = fields.Char('Email')
     address = fields.Char('Address')
-    dob = fields.Date('Date of Birth', date_format='%d/%m/%Y')
-    cbs_number = fields.Char('CBS Number', help="CBS Member Number", required=True)
+    dob = fields.Date('Date of Birth')
+    cbs_number = fields.Char('Member Number', help="Sacco Member Number", required=True)
     date_created = fields.Datetime('Date Created', readonly=True, default=fields.Datetime.now)
     gender = fields.Selection(selection=[
         ('male', 'Male'),
@@ -49,9 +49,26 @@ class CbsMember(models.Model):
 
     def approve_member(self):
         self.state = 'approved'
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Members',  # Change to your model's name
+            'res_model': 'cbs.member',  # e.g., 'res.partner' or 'member.member'
+            'view_mode': 'tree,form',
+            'target': 'current',
+            'domain': [('state', '=', 'approved')],  # Optional: filter approved records
+        }
 
     def confirm_to_draft(self):
         self.state = 'draft'
 
     def confirm_cancel(self):
         self.state = 'cancelled'
+
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Members',  # Change to your model's name
+            'res_model': 'cbs.member',  # e.g., 'res.partner' or 'member.member'
+            'view_mode': 'tree,form',
+            'target': 'current',
+            'domain': [('state', '=', 'approved')],  # Optional: filter approved records
+        }

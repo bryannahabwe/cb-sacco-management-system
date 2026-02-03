@@ -35,7 +35,7 @@
                                 type="object" class="oe_highlight"
                                 invisible="state != 'submitted'"/>
                         <button name="action_cancel" string="Cancel"
-                                invisible="state not in ('draft', 'submitted')"/>
+                                invisible="state not in ('submitted')"/>
                         <button name="action_draft" string="Set to Draft"
                                 type="object" invisible="state != 'cancelled'"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,submitted,paid"/>

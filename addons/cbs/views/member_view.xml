@@ -17,7 +17,7 @@
                     <field name="state" widget="badge" decoration-success="state =='approved'"
                            decoration-info="state in ('draft', 'submitted')"
                            decoration-danger="state =='cancelled'"/>
-                    <field name="date_created" invisible="1"/>
+                    <field name="date_created"/>
                 </tree>
             </field>
         </record>
@@ -33,7 +33,7 @@
                                 type="object" name="submit_form"
                                 invisible="state != 'draft'"/>
                         <button name="confirm_cancel" string="Cancel"
-                                invisible="state not in ('draft', 'submitted')"/>
+                                invisible="state not in ('submitted')"/>
                         <button name="approve_member" string="Approve"
                                 type="object" class="oe_highlight"
                                 invisible="state != 'submitted'"/>
@@ -48,7 +48,7 @@
                                 <field name="phone_number"/>
                                 <field name="address"/>
                                 <field name="gender"/>
-                                <field name="date_created" invisible="1"/>
+                                <field name="date_created"/>
                             </group>
                             <group>
                                 <field name="cbs_number"/>

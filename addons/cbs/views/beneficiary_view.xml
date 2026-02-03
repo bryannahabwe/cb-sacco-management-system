@@ -12,7 +12,7 @@
                                 type="object" name="action_confirm"
                                 invisible="state != 'draft'"/>
                         <button name="action_cancel" string="Cancel"
-                                invisible="state not in ('draft')"/>
+                                invisible="state not in ('submitted')"/>
                         <button name="action_draft" string="Set to Draft"
                                 type="object" invisible="state != 'cancelled'"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,submitted"/>

@@ -38,7 +38,7 @@ class CbsLoanApplication(models.Model):
     interest_rate = fields.Float(string='Interest Rate', default=0.015)
     loan_payments = fields.One2many('cbs.loan.payment', 'loan_id', string='Loan Payments')
     terms_in_months = fields.Integer(string='Payment Period in Months', default=0)
-    terms_in_months_text = fields.Char(string='Payment Period in Months', compute='_compute_terms_in_months_text',
+    terms_in_months_text = fields.Char(string='Payment Period Description', compute='_compute_terms_in_months_text',
                                        store=True)
     remaining_balance = fields.Monetary('Remaining Balance', default=0, compute='_compute_remaining_balance',
                                         store=True)
