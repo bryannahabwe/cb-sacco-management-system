@@ -5,6 +5,8 @@
 This CBS application is designed for managing the members, beneficiaries, monthly savings, loan applications, and loan payments of the Church Billionaire Sacco. 
 The application aims to streamline the Sacco's operations and enhance efficiency in managing member details, savings, and loan-related transactions.
 
+Note: This is an early prototype built with Python and Odoo. The system has since been fully rebuilt in Java and Spring Boot for production use.
+
 ## Features
 
 ### Members
